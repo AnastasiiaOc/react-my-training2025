@@ -1,9 +1,8 @@
 .container {
-    max-width: 1440px;
+    max-width: 960px;
     margin: 0 auto;
-}
-
-.icon {
-    display: block;
-    color: orangered;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
