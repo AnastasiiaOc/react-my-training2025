@@ -1,0 +1,12 @@
+.container {
+
+    max-width: 400px;
+    margin: auto;
+    padding:15px;
+    font-family: Arial, sans-serif;
+    border: solid 2px rgb(155, 175, 194);
+    border-radius: 10px;
+    display:flex;
+    margin-bottom: 20px;
+    
+}

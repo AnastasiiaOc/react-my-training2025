@@ -1,8 +1,18 @@
+/* 
 .container {
-    max-width: 960px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
+    background-color: blueviolet;
+    
+  } */
+
+  .sideBarButton{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    border: solid 2px rgba(126, 147, 178, 0.282)
+  }
