@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "topic": "Web Technologies",
-        "text": "Web technologies encompass a wide range of tools, languages, and techniques used to develop web applications and websites. These technologies include HTML, CSS, JavaScript, and various frameworks and libraries like React and Angular. HTML (Hypertext Markup Language) is the standard markup language for creating web pages and web applications. It defines the structure and content of a web page using elements and tags."
+        "topic": "Local Storage",
+        "text": "LocalStorage.getItem: we JSON.parse; setItem: we Json.stingify in useEffect "
     },
     {
         "id": 2,

@@ -11,6 +11,8 @@ import Timer from "../Timer/Timer.jsx";
 import ArticleService from "../ArticleService/ArticleService.jsx"
 import SearchForm from "../SearchForm/SearchForm.jsx";
 import { fetchArticles } from "../../articleService.js"
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.jsx";
+import ActivityTracker from "../ActivityTracker/ActivityTracker.jsx";
 
 // Htpp запит робиться обо в ефектах або в якомусь колбеці
 // 1. Fetch data
@@ -30,7 +32,8 @@ import { fetchArticles } from "../../articleService.js"
   // };
 
  
-
+    const [isTimerMounted, setIsTimerMounted] = useState(false);
+    const toggleTimer = () =>{ setIsTimerMounted(!isTimerMounted)}
 // =================================Article Service and Submit=============================
    const [isOpen, setIsOpen] = useState(false);
 
@@ -40,9 +43,6 @@ import { fetchArticles } from "../../articleService.js"
 
   // Plagination:===============================================
 
-      // Коли відбувається http запит?
-//   1) Зміна терміну пошуку searchTerm (сабміт форми)
-//   2) Зміна номеру групи page (Клnuік по load more)
 
       const [searchTerm, setSearchTerm] = useState('');
       const [page, setPage] = useState(1);
@@ -113,6 +113,11 @@ const openSidebar =() =>{
  
 	return (
     <>
+<ActivityTracker/>
+<ThemeSwitcher/>
+<button className ={css.timerButton} onClick ={toggleTimer}>{isTimerMounted ? "Hide Timer" : "Show Timer"}</button>
+{isTimerMounted && <Timer/>}
+{/* ====================================================================== */}
          <SearchForm onSearch={handleSearch}/>
       {isLoading && <p> Loading...</p>}
       {error && <b> Whoops an error occured, try to reload the page</b>}
@@ -129,11 +134,9 @@ const openSidebar =() =>{
       <Reader items ={articles}/>
       <button className={css.sideBarButton} type="button" onClick ={openSidebar}>open sidebar</button>
       {isOpen && <Sidebar onClose ={closeSidebar}/>}
+
+
    
-
-
-
-      <Timer/>
 
     </>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import css from "../Reader/Reader.module.css"
 
 // {   id: 1, 
@@ -6,7 +6,17 @@ import css from "../Reader/Reader.module.css"
 //     text: 'Web technologies encompass a wide range of tools, …nd content of a web page using elements and tags.'}
 
 export default function Reader({items}){
-    const [selectedIndex, setSelectedIndex] = useState(0)
+    // const [selectedIndex, setSelectedIndex] = useState(0)
+       // function of initialisation of state to avoid dyscronization of state because of local storage we do like this: because we need to read local storage before ounting
+    const [selectedIndex, setSelectedIndex] = useState(() =>{
+        const savedIndex = localStorage.getItem('reader-index');
+
+        if(savedIndex !== null){  // in case of parsing problems we need this
+            return JSON.parse(savedIndex); // we need to parse to get a number
+        }
+        return 0;
+    })
+ 
 
     // const handleNext = () =>{
     //     setSelectedIndex((selectedIndex < items.length -1) ? selectedIndex + 1 : selectedIndex)
@@ -15,6 +25,11 @@ export default function Reader({items}){
     //     console.log(items.length -1)
     //     setSelectedIndex ((selectedIndex >= 1) ? selectedIndex - 1 : selectedIndex )    
     // }
+
+    useEffect (() =>{
+        localStorage.setItem('reader-index', JSON.stringify(selectedIndex))},
+         [selectedIndex]);
+
 
     const handleNext =() =>{
         setSelectedIndex(selectedIndex + 1);
@@ -31,15 +46,21 @@ export default function Reader({items}){
     return (
      
         <div className={css.container}>
-             <h2>Reader</h2>
-             <div>  
-            <button type ="button"onClick = {handlePrev} disabled = {isFirst}>Prev</button>
-             <button type ="button" onClick ={handleNext} disabled = {isLast}>Next</button>
-             </div>
-             <p>{selectedIndex + 1}/{items.length}</p>
-             <article>
-                <h3>{currentArticle.topic}</h3>
-                <p> {currentArticle.text}</p>
+            <header className ={css.header}>
+            <h2 className = {css.mainHeader}>Reader</h2>
+
+<div className ={css.readerButton}>  
+<button className={css.buttonItself}  type ="button"onClick = {handlePrev} disabled = {isFirst}>Prev</button>
+<button className={css.buttonItself}  type ="button" onClick ={handleNext} disabled = {isLast}>Next</button>
+</div>
+
+<p className={css.pages}>{selectedIndex + 1}/{items.length}</p>
+            </header>
+             
+
+             <article className ={css.readerArticle}>
+                <h3 className={css.readerHeader}>{currentArticle.topic}</h3>
+                <p className ={css.readerParagraph}> {currentArticle.text}</p>
              </article>
            
         </div>

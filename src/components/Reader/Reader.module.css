@@ -1,12 +1,68 @@
 .container {
 
     max-width: 400px;
-    margin: auto;
-    padding:15px;
+    margin: 20px auto;
+    padding:20px;
     font-family: Arial, sans-serif;
     border: solid 2px rgb(155, 175, 194);
     border-radius: 10px;
-    display:flex;
+ 
     margin-bottom: 20px;
     
+
+   
+
+ 
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+ } 
+
+ .header {display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 15px;
+ }
+
+.mainHeader{
+    display:flex;
+    gap: 20px;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px; */
+  
+}
+
+.pages{
+    display:flex;
+}
+
+.readerButton{
+    /* padding: 5px 10px; */
+    /* border: 3px solid azure; */
+    border-radius:10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+
+}
+
+.buttonItself{
+    margin-right:5px;
+    border: 1px solid rgb(161, 150, 194);
+}
+.readerArticle {
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+}
+
+.readerHeader{
+  font-size:16px;
+}
+
+.readerParagraph{
+     font-size :12px;
 }

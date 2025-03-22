@@ -16,3 +16,7 @@
     left: 20px;
     border: solid 2px rgba(126, 147, 178, 0.282)
   }
+
+  .timerButton{
+    margin-bottom: 15px;
+  }
